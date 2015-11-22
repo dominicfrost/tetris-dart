@@ -1,0 +1,7 @@
+name: tetris
+version: 0.0.0
+description: A simple tetris app that can be dropped into any div
+author: Dominic Frost
+dependencies:
+  html: any
+  browser: any
