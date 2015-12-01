@@ -70,6 +70,7 @@ class Game {
     activePiece = new LinePiece((this._cols / 2).floor());
   }
 
+  // used to save the piece to the board after it is no longer active.
   _savePiece() {
     tetrisBoard.savePiece(activePiece);
   }

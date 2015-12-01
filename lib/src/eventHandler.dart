@@ -11,10 +11,10 @@ class EventHandler {
   _handleKeyDown(html.KeyboardEvent e) {
     switch (e.keyCode) {
       case 37: // left
-        tetrisGame.activePiece.moveLeft();
+        tetrisGame.activePiece.moveLeft(tetrisGame.tetrisBoard.boardArray);
         break;
       case 38: // up
-        tetrisGame.activePiece.toBottom();
+        tetrisGame.activePiece.moveToBottom(tetrisGame.tetrisBoard.boardArray);
         break;
       case 39: // right
         tetrisGame.activePiece.moveRight(tetrisGame.tetrisBoard.boardArray);
@@ -23,10 +23,10 @@ class EventHandler {
         tetrisGame.activePiece.moveDown(tetrisGame.tetrisBoard.boardArray);
         break;
       case 81: // q
-        tetrisGame.activePiece.rotateCounterClockwise();
+        tetrisGame.activePiece.rotateCounterClockwise(tetrisGame.tetrisBoard.boardArray);
         break;
       case 87: // w
-        tetrisGame.activePiece.rotateClockwise();
+        tetrisGame.activePiece.rotateClockwise(tetrisGame.tetrisBoard.boardArray);
         break;
       default: // tha rest
       // do nothing, case we dont care

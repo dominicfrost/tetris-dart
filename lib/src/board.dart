@@ -11,10 +11,10 @@ class Board {
   Board(this.parent, this._rows, this._cols) {
     _createTetrisBoard();
 
-    // creates some fake data
     boardArray = new Array2d(this._cols, this._rows, defaultValue: 0);
   }
 
+  // intial steps to create the board svg element.
   _createTetrisBoard() {
     tetrisBoard = new svg.SvgSvgElement();
 
@@ -34,11 +34,14 @@ class Board {
 
   // function adds the piece permanenetly to the board.
   savePiece(Piece activePiece) {
-    activePiece.drawPoints.forEach((Point<int> point) {
+    activePiece.getDrawPoints(boardArray).forEach((Point<int> point) {
       boardArray[point.x][point.y] = activePiece.color;
     });
   }
 
+  // Draws all the blocks that exist in the blocksArray,
+  // and then draws the blocks from the active piece.
+  // (since they do not exist in the blocksArray)
   redrawPieces(Piece activePiece) {
     svg.RectElement getBlock(int x, int y, int color) {
       svg.RectElement block = new svg.RectElement();
@@ -67,7 +70,7 @@ class Board {
     }
 
     // add blocks from the active piece
-    activePiece.drawPoints.forEach((Point<int> point) {
+    activePiece.getDrawPoints(boardArray).forEach((Point<int> point) {
       blocks.append(getBlock(point.x, point.y, activePiece.color));
     });
   }
