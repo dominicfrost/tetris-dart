@@ -1,7 +1,29 @@
 part of tetris;
 
 enum Rotation { zero, ninty, one_eighty, two_seventy }
-enum Colors { red, green, blue, yellow }
+enum PieceType { none, I, J, L, O, S, T, Z }
+
+String getColorForPiece(PieceType piece) {
+  switch (piece) {
+    case PieceType.none:
+      return 'white';
+    case PieceType.I:
+      return 'maroon';
+    case PieceType.J:
+      return 'silver';
+    case PieceType.L:
+      return 'purple';
+    case PieceType.O:
+      return 'blue';
+    case PieceType.S:
+      return 'green';
+    case PieceType.T:
+      return 'brown';
+    case PieceType.Z:
+      return 'teal';
+  }
+  return 'black';
+}
 
 class Point<T> {
   T x;
@@ -18,7 +40,7 @@ class Point<T> {
  */
 class Array2d<T> {
   List<List<T>> array;
-  T defaultValue = null;
+  T defaultValue;
 
   Array2d(int width, int height, {T this.defaultValue}) {
     array = new List<List<T>>();
@@ -28,7 +50,7 @@ class Array2d<T> {
 
   operator [](int x) => array[x];
 
-  void set width(int v) {
+  set width(int v) {
     while (array.length > v) array.removeLast();
     while (array.length < v) {
       List<T> newList = new List<T>();
@@ -39,7 +61,7 @@ class Array2d<T> {
     }
   }
 
-  void set height(int v) {
+  set height(int v) {
     while (array.first.length > v) {
       for (int x = 0; x < array.length; x++) array[x].removeLast();
     }

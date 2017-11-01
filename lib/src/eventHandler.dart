@@ -4,7 +4,6 @@ class EventHandler {
   Game tetrisGame;
 
   EventHandler(this.tetrisGame) {
-    // TODO: stop using the window plox
     html.window.addEventListener('keydown', _handleKeyDown);
   }
 
